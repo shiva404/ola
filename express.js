@@ -18,9 +18,34 @@ app.use(stylus.middleware(
 app.use(express.static(__dirname + '/public'));
 
 app.get('/', function(req, res){
+    var txtWebMsg = req.param('txtweb-message');
+    
+    if(/reg .*/g.test(txtWebMsg)){
+        //todo process regestration
+        var user = extractUserFromMsg(txtWebMsg);
+        
+    }
+    else if (/req .*/g.test(txtWebMsg)){
+        //todo: process booking request 
+    }
     res.render('home',
         { title : 'Home' }
     )
 });
+
+function checkUserExists(phoneHash){
+
+}
+
+function createUser(phoneHash, email, name){
+    
+}
+
+function getLocalityFromPin(pinCode){
+
+}
+
+
+
 
 app.listen(8080);
