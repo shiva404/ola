@@ -19,31 +19,45 @@ app.use(express.static(__dirname + '/public'));
 
 app.get('/', function(req, res){
     var txtWebMsg = req.param('txtweb-message');
-    
+
+
     if(/reg .*/g.test(txtWebMsg)){
         //todo process regestration
         var user = extractUserFromMsg(txtWebMsg);
-        
+        createUser(user)
+        res.render('home',
+            { title : 'Home' }
+        )
     }
     else if (/req .*/g.test(txtWebMsg)){
+        
         //todo: process booking request 
     }
-    res.render('home',
-        { title : 'Home' }
-    )
+    else {
+        res.render('home',
+            { title : 'Home' }
+        );
+        
+    }
 });
 
 function checkUserExists(phoneHash){
 
 }
 
-function createUser(phoneHash, email, name){
+function createUser(user){
     
 }
 
 function getLocalityFromPin(pinCode){
 
 }
+
+function extractUserFromMsg(txtWebMsg) {
+    var data = /reg email:(.*)\s+phone:(.*)\s+name:(.*)/g.exec(txtWebMsg);
+    return {email:data[1], phone:data[2], name:data[3]}
+}
+
 
 
 
