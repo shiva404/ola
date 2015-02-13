@@ -72,6 +72,7 @@ app.get('/', function(req, res){
     else {
         checkUserExists(phoneHash, function(err, rows){
             if(err){
+                console.log(err)
                 res.render('error_message')
             } else {
                 var b = rows[0].count > 0;
@@ -79,6 +80,7 @@ app.get('/', function(req, res){
                 if(b){
                     checkUserRegistered(phoneHash, function(error, data_rows){
                         if(error){
+                            console.log(err)
                             res.render('error_message')
                         } else {
                             if(data_rows[0].count > 0){
@@ -91,6 +93,7 @@ app.get('/', function(req, res){
                 } else {
                         savePhoneHash(phoneHash, function(err, result){
                         if(err){
+                            console.log(err)
                             res.render('error_message')      
                         } else {
                             res.render('first_time')
