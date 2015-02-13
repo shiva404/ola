@@ -106,9 +106,11 @@ app.get('/', function(req, res){
 });
 
 function bookCab(user, bookingDetils, cb) {
-    
-    cb(false, {name:user.name, phone:user.phone, from:getLocalityFromPin(bookingDetils.fromPin), 
-        to:getLocalityFromPin(bookingDetils.toPin), date:bookingDetils.date, time:bookingDetils.time, rno:"00002345ka456"})
+
+    var localityFromPin = "Yashwanthpur";
+    var localityFromPin2 = "Bellandur";
+    cb(false, {name:user.name, phone:user.phone_no, from: localityFromPin,
+        to: localityFromPin2, date:bookingDetils.date, time:bookingDetils.time, rno:"00002345ka456"})
 }
 
 function getUserDetails(phoneHash, cb) {
