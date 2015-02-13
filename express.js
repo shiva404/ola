@@ -162,6 +162,7 @@ function extractUserFromMsg(txtWebMsg) {
 function extractBookingDetails(txtWebMsg) {
     console.log("received message:" + txtWebMsg);
     //req frmPin:500022 toPin:5000103 frmLndmrk:Metro date(dd/mm/yy):22/02/14 time:3am
+    //req frmPin:560022 toPin:5600103 frmLndmrk:ecospace dt(dd/mm/yy):14/02/14 time:3pm
     var data = /req frmPin:(.*)\s+toPin:(.*)\s+frmLndmrk:(.*)\s+date\(dd\/mm\/yy\):(.*)\s+time:(.*)/g.exec(txtWebMsg);
     return {fromPin:data[1], toPin:data[2], fromLandmark:data[3], date:data[4], time:data[5]}
 }
